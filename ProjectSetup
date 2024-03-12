@@ -1,1 +1,26 @@
-
+Öncelikle projeyi Github'dan çekebilmek için git komutları kullanacağımızdan dolayı, Git Bash kurulumu yapılır.
+https://git-scm.com/downloads linki üzerinden işletim sisteminize uygun olan dosyayı indirin ve kurun.
+Daha sonra Git Bash'i çalıştırıp onun üzerinden sırayla aşağıdaki komutları çalıştıracağız.
+İlk olarak projeyi Github'dan klonlamak için, 
+git clone https://github.com/ervayalcn/PHP_Laravel_Project.git
+komutunu çalıştırın.
+İşlem tamamlandıktan sonra yeni komut satırında proje klasörüne girmek için olan şu komutu yazacağız:
+cd PHP_Laravel_Project
+Laravel projesini çalıştırabilmek için ihtiyacınız olan composer kurulumunu şu komutla yapın:
+composer install
+Kurulum tamamlandıktan sonra, proje için yapılandırma ayarlarını içeren ve veri tabanı bağlantıları gibi hassas bilgileri içeren '.env' dosyasını ekleyeceğiz.
+Bunun için proje kurulduğunda otomatik olarak gelen '.env.example' dosyasının içerisindeki örnek yapılandırma ayarlarını, .env dosyasına kopyalayacağız.
+Bunun için şu komutu kullanın:
+cp .env.example .env
+Güvenlik açısından yeni bir uygulama anahtarı oluşturmak için şu komutu çalıştırın:
+php artisan key:generate
+Laravel'de kullanıcıların yüklediği dosyaları depolamak için genellikle storage/app/public dizini kullanılır. 
+Ancak bu dosyalara doğrudan URL üzerinden erişilemez. 
+Bu nedenle, public/storage dizinine bir sembolik bağlantı oluşturmak ve bu sayede storage/app/public dizinindeki dosyaları, 
+web tarayıcıları üzerinden erişilebilir hale getirebilmek için şu komut kullanılır:
+php artisan storage:link
+Daha sonra 'php artisan migrate:fresh --seed' komutunu çalıştırın.
+Bu komut, veri tabanını sıfırlar ve yeni projeyi çalıştırmak için başlangıç durumuna getirir.
+Bu adımdan sonra, backend projesinin bağlanacağı frontend projesini kurmak için,
+'PHP_Laravel_Project_Frontend' isimli projeyi yine Github üzerinden alabilirsiniz.
+Kurulum adımları bu projede olduğu gibi Frontend projesinde de Project_Setup dosyasında anlatılmıştır.
